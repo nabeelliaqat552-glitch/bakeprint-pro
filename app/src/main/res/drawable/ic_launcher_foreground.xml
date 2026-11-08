@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Label tag with a bold B, gold on chocolate. 108dp canvas, safe zone 66dp. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp" android:height="108dp"
+    android:viewportWidth="108" android:viewportHeight="108">
+    <!-- tag outline -->
+    <path android:strokeColor="#B28B59" android:strokeWidth="3"
+        android:strokeLineJoin="round" android:fillColor="#00000000"
+        android:pathData="M33,38 L66,38 L78,54 L66,70 L33,70 Q30,70 30,67 L30,41 Q30,38 33,38 Z" />
+    <!-- tag hole -->
+    <path android:fillColor="#B28B59"
+        android:pathData="M68,54 m-3,0 a3,3 0 1,0 6,0 a3,3 0 1,0 -6,0" />
+    <!-- letter B -->
+    <path android:fillColor="#F7F3EC"
+        android:pathData="M39,44 L49,44 Q56,44 56,49.5 Q56,52.6 53.4,53.8 Q57,55 57,58.8 Q57,64 50,64 L39,64 Z M44,48 L44,52 L48.5,52 Q51,52 51,50 Q51,48 48.5,48 Z M44,56 L44,60 L49,60 Q52,60 52,58 Q52,56 49,56 Z" />
+</vector>
