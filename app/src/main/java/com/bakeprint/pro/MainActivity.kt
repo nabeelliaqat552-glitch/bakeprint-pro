@@ -25,8 +25,14 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.bakeprint.pro.ui.*
 
 class MainActivity : ComponentActivity() {
+    override fun onResume() {
+        super.onResume()
+        com.bakeprint.pro.print.ActivityHolder.current = java.lang.ref.WeakReference(this)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        com.bakeprint.pro.print.ActivityHolder.current = java.lang.ref.WeakReference(this)
         setContent {
             BakePrintTheme {
                 App(viewModel())

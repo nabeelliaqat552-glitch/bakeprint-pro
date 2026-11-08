@@ -272,6 +272,11 @@ object PdfMaker {
 /* One entry point for the app                                         */
 /* ------------------------------------------------------------------ */
 
+/** The visible Activity; Android's print dialog can only be opened from an Activity. */
+object ActivityHolder {
+    var current: java.lang.ref.WeakReference<android.app.Activity>? = null
+}
+
 object PrinterService {
     /**
      * Sends labels to a printer. Blocking: call from Dispatchers.IO.
@@ -284,8 +289,9 @@ object PrinterService {
             val f = File(ctx.cacheDir, "labels.pdf")
             FileOutputStream(f).use { PdfMaker.write(items, widthMm, heightMm, it) }
             onProgress(total, total)
+            val act = ActivityHolder.current?.get() ?: throw PrintException("Open the app and try again.")
             android.os.Handler(android.os.Looper.getMainLooper()).post {
-                PdfMaker.printWithSystem(ctx, f, widthMm, heightMm, "BakePrint labels")
+                try { PdfMaker.printWithSystem(act, f, widthMm, heightMm, "BakePrint labels") } catch (_: Exception) {}
             }
             return
         }
